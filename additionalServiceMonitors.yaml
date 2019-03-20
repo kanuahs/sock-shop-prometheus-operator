@@ -1,5 +1,6 @@
 prometheus:
   additionalServiceMonitors:
+
     - name: "sock-shop-front-end"
       additionalLabels: {}
       jobLabel: "front-end-metrics"
@@ -12,12 +13,78 @@ prometheus:
       endpoints:
       - targetPort: 8079
         path: /metrics
+
     - name: "sock-shop-orders"
       additionalLabels: {}
       jobLabel: "orders-metrics"
       selector:
         matchLabels:
           name: orders
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics
+
+    - name: "sock-shop-carts"
+      additionalLabels: {}
+      jobLabel: "carts-metrics"
+      selector:
+        matchLabels:
+          name: carts
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics
+        
+    - name: "sock-shop-payment"
+      additionalLabels: {}
+      jobLabel: "payment-metrics"
+      selector:
+        matchLabels:
+          name: payment
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics
+        
+    - name: "sock-shop-user"
+      additionalLabels: {}
+      jobLabel: "user-metrics"
+      selector:
+        matchLabels:
+          name: user
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics
+
+    - name: "sock-shop-shipping"
+      additionalLabels: {}
+      jobLabel: "shipping-metrics"
+      selector:
+        matchLabels:
+          name: shipping
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics
+
+    - name: "sock-shop-catalogue"
+      additionalLabels: {}
+      jobLabel: "catalogue-metrics"
+      selector:
+        matchLabels:
+          name: catalogue
       namespaceSelector:
         matchNames:
         - sock-shop

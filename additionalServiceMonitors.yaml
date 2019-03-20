@@ -1,0 +1,26 @@
+prometheus:
+  additionalServiceMonitors:
+    - name: "sock-shop-front-end"
+      additionalLabels: {}
+      jobLabel: "front-end-metrics"
+      selector:
+        matchLabels:
+          name: front-end
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 8079
+        path: /metrics
+    - name: "sock-shop-orders"
+      additionalLabels: {}
+      jobLabel: "orders-metrics"
+      selector:
+        matchLabels:
+          name: orders
+      namespaceSelector:
+        matchNames:
+        - sock-shop
+      endpoints:
+      - targetPort: 80
+        path: /metrics

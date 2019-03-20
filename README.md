@@ -15,9 +15,9 @@ add the additional service monitors
 helm upgrade prom stable/prometheus-operator --values=additionalServiceMonitors.yaml
 ```
 
-Check if prometheus if scraping logs
+Check if prometheus is scraping logs
 ```
-kubectl port-forward -n monitoring prometheus-fire-prometheus-operator-prometheus-0 9090:9090
+kubectl port-forward -n monitoring prometheus-prom-prometheus-operator-prometheus-0 9090:9090
 ```
 ```
 http://localhost:9090
